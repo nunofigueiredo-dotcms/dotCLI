@@ -1,0 +1,83 @@
+{
+  "clazz" : "DotAssetContentType",
+  "id" : "04c1218161d5378bf4e840a1eb38effe",
+  "name" : "Document",
+  "variable" : "Document",
+  "modDate" : "2026-09-01T17:37:48.000+00:00",
+  "iDate" : "2024-06-03T19:51:44.000+00:00",
+  "host" : "SYSTEM_HOST",
+  "folder" : "SYSTEM_FOLDER",
+  "siteName" : "systemHost",
+  "folderPath" : "/",
+  "icon" : "file_copy",
+  "baseType" : "DOTASSET",
+  "fields" : [ {
+    "clazz" : "HostFolderField",
+    "searchable" : true,
+    "indexed" : true,
+    "id" : "2da70ac68dfdb7b5047a2e73cd14d2d1",
+    "modDate" : "2026-09-01T17:37:48.000+00:00",
+    "name" : "Site or Folder",
+    "variable" : "hostFolder",
+    "fieldType" : "Host-Folder",
+    "fieldTypeLabel" : "Site or Folder",
+    "iDate" : "2024-06-03T19:51:44.000+00:00",
+    "dataType" : "SYSTEM"
+  }, {
+    "clazz" : "BinaryField",
+    "searchable" : true,
+    "indexed" : true,
+    "listed" : true,
+    "id" : "816e5d1b44d614cfa443a4e0b009f641",
+    "modDate" : "2026-09-01T17:37:48.000+00:00",
+    "name" : "Asset",
+    "variable" : "asset",
+    "required" : true,
+    "sortOrder" : 1,
+    "fixed" : true,
+    "fieldType" : "Binary",
+    "fieldTypeLabel" : "Binary",
+    "fieldVariables" : [ {
+      "clazz" : "com.dotcms.contenttype.model.field.ImmutableFieldVariable",
+      "id" : "f1bcb193-0c85-48bf-b9a9-1fc138c9b5d5",
+      "fieldId" : "816e5d1b44d614cfa443a4e0b009f641",
+      "name" : null,
+      "key" : "accept",
+      "value" : "application/pdf,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint",
+      "userId" : null,
+      "modDate" : null
+    }, {
+      "clazz" : "com.dotcms.contenttype.model.field.ImmutableFieldVariable",
+      "id" : "1c1e3429-baa2-4c55-9d37-b2d0e3ffe00e",
+      "fieldId" : "816e5d1b44d614cfa443a4e0b009f641",
+      "name" : null,
+      "key" : "systemOptions",
+      "value" : "{\"allowURLImport\":true,\"allowCodeWrite\":false}",
+      "userId" : null,
+      "modDate" : null
+    } ],
+    "iDate" : "2024-06-03T19:51:44.000+00:00",
+    "dataType" : "SYSTEM"
+  }, {
+    "clazz" : "TagField",
+    "searchable" : true,
+    "indexed" : true,
+    "id" : "bccc863787a7fc5915eaef033ac867dd",
+    "modDate" : "2026-09-01T17:37:48.000+00:00",
+    "name" : "Tags",
+    "variable" : "tags",
+    "sortOrder" : 2,
+    "fieldType" : "Tag",
+    "fieldTypeLabel" : "Tag",
+    "iDate" : "2024-06-03T19:51:44.000+00:00",
+    "dataType" : "SYSTEM"
+  } ],
+  "metadata" : {
+    "CONTENT_EDITOR2_ENABLED" : false
+  },
+  "workflows" : [ {
+    "id" : "d61a59e1-a49c-46f2-a929-db2b4bfa88b2",
+    "variableName" : "SystemWorkflow"
+  } ],
+  "dotCMSObjectType" : "ContentType"
+}

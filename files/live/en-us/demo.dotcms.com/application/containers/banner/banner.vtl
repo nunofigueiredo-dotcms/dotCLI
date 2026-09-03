@@ -1,0 +1,229 @@
+<!-- Container Code: /application/containers/banner.vtl -->
+
+## ── Title font size ───────────────────────────────────────────
+#if($dotContentMap.dotStyleProperties.get("title-size") == "text-sm")
+  #set($titleFontSize = "0.875rem")
+#elseif($dotContentMap.dotStyleProperties.get("title-size") == "text-base")
+  #set($titleFontSize = "1rem")
+#elseif($dotContentMap.dotStyleProperties.get("title-size") == "text-lg")
+  #set($titleFontSize = "1.125rem")
+#elseif($dotContentMap.dotStyleProperties.get("title-size") == "text-xl")
+  #set($titleFontSize = "1.25rem")
+#elseif($dotContentMap.dotStyleProperties.get("title-size") == "text-2xl")
+  #set($titleFontSize = "1.5rem")
+#elseif($dotContentMap.dotStyleProperties.get("title-size") == "text-3xl")
+  #set($titleFontSize = "1.875rem")
+#elseif($dotContentMap.dotStyleProperties.get("title-size") == "text-4xl")
+  #set($titleFontSize = "2.25rem")
+#elseif($dotContentMap.dotStyleProperties.get("title-size") == "text-5xl")
+  #set($titleFontSize = "3rem")
+#else
+  #set($titleFontSize = "3.75rem")
+#end
+
+## ── Caption font size ─────────────────────────────────────────
+#if($dotContentMap.dotStyleProperties.get("caption-size") == "text-sm")
+  #set($captionFontSize = "0.875rem")
+#elseif($dotContentMap.dotStyleProperties.get("caption-size") == "text-base")
+  #set($captionFontSize = "1rem")
+#elseif($dotContentMap.dotStyleProperties.get("caption-size") == "text-lg")
+  #set($captionFontSize = "1.125rem")
+#elseif($dotContentMap.dotStyleProperties.get("caption-size") == "text-2xl")
+  #set($captionFontSize = "1.5rem")
+#else
+  #set($captionFontSize = "1.25rem")
+#end
+
+## ── Title weight ──────────────────────────────────────────────
+#if($dotContentMap.dotStyleProperties.get("title-style") && $dotContentMap.dotStyleProperties.get("title-style").get("bold"))
+  #set($titleWeight = "700")
+#else
+  #set($titleWeight = "400")
+#end
+
+## ── Text alignment ────────────────────────────────────────────
+#set($textAlign = "center")
+#set($alignItems = "center")
+#if($dotContentMap.dotStyleProperties.get("text-alignment") == "left")
+  #set($textAlign = "left")
+  #set($alignItems = "flex-start")
+#elseif($dotContentMap.dotStyleProperties.get("text-alignment") == "right")
+  #set($textAlign = "right")
+  #set($alignItems = "flex-end")
+#end
+
+## ── Overlay ───────────────────────────────────────────────────
+#set($overlayStyle = "none")
+#if($dotContentMap.dotStyleProperties.get("overlay-style"))
+  #set($overlayStyle = $dotContentMap.dotStyleProperties.get("overlay-style"))
+#end
+
+## ── Button color ──────────────────────────────────────────────
+#if($dotContentMap.dotStyleProperties.get("button-color") == "green")
+  #set($btnBg = "#22C55E")
+  #set($btnBgHover = "#15803D")
+#elseif($dotContentMap.dotStyleProperties.get("button-color") == "red")
+  #set($btnBg = "#EF4444")
+  #set($btnBgHover = "#B91C1C")
+#elseif($dotContentMap.dotStyleProperties.get("button-color") == "purple")
+  #set($btnBg = "#A855F7")
+  #set($btnBgHover = "#7E22CE")
+#elseif($dotContentMap.dotStyleProperties.get("button-color") == "orange")
+  #set($btnBg = "#F97316")
+  #set($btnBgHover = "#C2410C")
+#elseif($dotContentMap.dotStyleProperties.get("button-color") == "teal")
+  #set($btnBg = "#14B8A6")
+  #set($btnBgHover = "#0F766E")
+#else
+  #set($btnBg = "#3B82F6")
+  #set($btnBgHover = "#1D4ED8")
+#end
+
+## ── Button size ───────────────────────────────────────────────
+#if($dotContentMap.dotStyleProperties.get("button-size") == "small")
+  #set($btnPadding = "0.5rem 0.75rem")
+  #set($btnFontSize = "1rem")
+#elseif($dotContentMap.dotStyleProperties.get("button-size") == "large")
+  #set($btnPadding = "1rem 1.5rem")
+  #set($btnFontSize = "1.5rem")
+#else
+  #set($btnPadding = "0.5rem 1rem")
+  #set($btnFontSize = "1.25rem")
+#end
+
+## ── Button radius ─────────────────────────────────────────────
+#if($dotContentMap.dotStyleProperties.get("button-style") && $dotContentMap.dotStyleProperties.get("button-style").get("rounded"))
+  #set($btnRadius = "0.5rem")
+#elseif($dotContentMap.dotStyleProperties.get("button-style") && $dotContentMap.dotStyleProperties.get("button-style").get("full-rounded"))
+  #set($btnRadius = "9999px")
+#else
+  #set($btnRadius = "0.125rem")
+#end
+
+## ── Button shadow ─────────────────────────────────────────────
+#if($dotContentMap.dotStyleProperties.get("button-style") && $dotContentMap.dotStyleProperties.get("button-style").get("shadow"))
+  #set($btnShadow = "0 10px 15px -3px rgba(0,0,0,0.1),0 4px 6px -4px rgba(0,0,0,0.1)")
+#else
+  #set($btnShadow = "none")
+#end
+
+## ── Unique scoping class ──────────────────────────────────────
+#set($cls = "banner-$dotContentMap.identifier")
+
+<style>
+.$cls {
+  position: relative;
+  width: 100%;
+  height: 24rem;
+  background-color: #E5E7EB;
+  overflow: hidden;
+}
+
+.$cls .bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.$cls .overlay {
+  position: absolute;
+  inset: 0;
+  #if($overlayStyle == "dark")
+  background-color: rgba(0,0,0,0.4);
+  #elseif($overlayStyle == "light")
+  background-color: rgba(255,255,255,0.2);
+  #elseif($overlayStyle == "gradient")
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent, rgba(0,0,0,0.5));
+  #end
+}
+
+.$cls .inner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  align-items: $alignItems;
+  text-align: $textAlign;
+}
+
+.$cls .title {
+  margin-bottom: 0.5rem;
+  font-size: $titleFontSize;
+  font-weight: $titleWeight;
+  color: #FFFFFF;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+  #if($dotContentMap.dotStyleProperties.get("title-style") && $dotContentMap.dotStyleProperties.get("title-style").get("italic"))
+  font-style: italic;
+  #end
+  #if($dotContentMap.dotStyleProperties.get("title-style") && $dotContentMap.dotStyleProperties.get("title-style").get("underline"))
+  text-decoration: underline;
+  #end
+}
+
+.$cls .caption {
+  margin-bottom: 1rem;
+  font-size: $captionFontSize;
+  color: #FFFFFF;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+
+.$cls .btn {
+  display: inline-block;
+  font-weight: 700;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: $btnPadding;
+  font-size: $btnFontSize;
+  background-color: $btnBg;
+  border-radius: $btnRadius;
+  box-shadow: $btnShadow;
+  transition: background-color 0.3s;
+}
+
+.$cls .btn:hover {
+  background-color: $btnBgHover;
+}
+</style>
+
+## ── Render ────────────────────────────────────────────────────
+<div class="$cls">
+  #if($dotContentMap.image)
+  <img
+    class="bg-img"
+    src="/dA/${dotContentMap.identifier}/image/1200maxw/1200cw/570ch/80q/$dotContentMap.image.name"
+    alt="$!{dotContentMap.title}"
+  />
+  #end
+  #if($overlayStyle != "none")
+  <div class="overlay"></div>
+  #end
+  <div class="inner">
+    <h2 class="title"
+      #if($EDIT_MODE)
+        data-language="$CONTENT_LANGUAGE"
+        data-mode="minimal"
+        data-inode="$ContentInode"
+        data-field-name="title"
+      #end
+    >$!{dotContentMap.title}</h2>
+    #if($dotContentMap.caption)
+    <p class="caption"
+      #if($EDIT_MODE)
+        data-language="$CONTENT_LANGUAGE"
+        data-mode="minimal"
+        data-inode="$ContentInode"
+        data-field-name="caption"
+      #end
+    >$!{dotContentMap.caption}</p>
+    #end
+    #if($dotContentMap.link)
+    <a href="$dotContentMap.link" class="btn">
+      #if($dotContentMap.buttonText)$dotContentMap.buttonText#else See more #end
+    </a>
+    #end
+  </div>
+</div>
